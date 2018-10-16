@@ -13,6 +13,11 @@
 		EA0511132175C88B00AD8329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0511122175C88B00AD8329 /* Assets.xcassets */; };
 		EA0511162175C88B00AD8329 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0511142175C88B00AD8329 /* LaunchScreen.storyboard */; };
 		EA0511192175C88B00AD8329 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0511182175C88B00AD8329 /* main.m */; };
+		EA0511282175C91500AD8329 /* TestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0511202175C91400AD8329 /* TestTableViewController.m */; };
+		EA0511292175C91500AD8329 /* UIView+YuViewDisplayArea.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0511212175C91500AD8329 /* UIView+YuViewDisplayArea.m */; };
+		EA05112A2175C91500AD8329 /* TestCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0511242175C91500AD8329 /* TestCollectionViewController.m */; };
+		EA05112C2175C91500AD8329 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0511272175C91500AD8329 /* TestViewController.m */; };
+		EA05112F2175CE9700AD8329 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EA05112E2175CE9700AD8329 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,15 @@
 		EA0511152175C88B00AD8329 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA0511172175C88B00AD8329 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA0511182175C88B00AD8329 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EA05111F2175C91400AD8329 /* UIView+YuViewDisplayArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YuViewDisplayArea.h"; sourceTree = "<group>"; };
+		EA0511202175C91400AD8329 /* TestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableViewController.m; sourceTree = "<group>"; };
+		EA0511212175C91500AD8329 /* UIView+YuViewDisplayArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YuViewDisplayArea.m"; sourceTree = "<group>"; };
+		EA0511222175C91500AD8329 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		EA0511232175C91500AD8329 /* TestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableViewController.h; sourceTree = "<group>"; };
+		EA0511242175C91500AD8329 /* TestCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollectionViewController.m; sourceTree = "<group>"; };
+		EA0511252175C91500AD8329 /* TestCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCollectionViewController.h; sourceTree = "<group>"; };
+		EA0511272175C91500AD8329 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		EA05112E2175CE9700AD8329 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,13 +76,30 @@
 				EA05110A2175C88A00AD8329 /* AppDelegate.m */,
 				EA05110C2175C88A00AD8329 /* ViewController.h */,
 				EA05110D2175C88A00AD8329 /* ViewController.m */,
+				EA05111F2175C91400AD8329 /* UIView+YuViewDisplayArea.h */,
+				EA0511212175C91500AD8329 /* UIView+YuViewDisplayArea.m */,
+				EA05112D2175C99100AD8329 /* TestViewControllers */,
 				EA05110F2175C88A00AD8329 /* Main.storyboard */,
 				EA0511122175C88B00AD8329 /* Assets.xcassets */,
-				EA0511142175C88B00AD8329 /* LaunchScreen.storyboard */,
 				EA0511172175C88B00AD8329 /* Info.plist */,
+				EA0511142175C88B00AD8329 /* LaunchScreen.storyboard */,
 				EA0511182175C88B00AD8329 /* main.m */,
+				EA05112E2175CE9700AD8329 /* README.md */,
 			);
 			path = YuViewDisplayArea;
+			sourceTree = "<group>";
+		};
+		EA05112D2175C99100AD8329 /* TestViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EA0511222175C91500AD8329 /* TestViewController.h */,
+				EA0511272175C91500AD8329 /* TestViewController.m */,
+				EA0511232175C91500AD8329 /* TestTableViewController.h */,
+				EA0511202175C91400AD8329 /* TestTableViewController.m */,
+				EA0511252175C91500AD8329 /* TestCollectionViewController.h */,
+				EA0511242175C91500AD8329 /* TestCollectionViewController.m */,
+			);
+			path = TestViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +161,7 @@
 			files = (
 				EA0511162175C88B00AD8329 /* LaunchScreen.storyboard in Resources */,
 				EA0511132175C88B00AD8329 /* Assets.xcassets in Resources */,
+				EA05112F2175CE9700AD8329 /* README.md in Resources */,
 				EA0511112175C88A00AD8329 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,8 +174,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA05110E2175C88A00AD8329 /* ViewController.m in Sources */,
+				EA0511292175C91500AD8329 /* UIView+YuViewDisplayArea.m in Sources */,
+				EA05112C2175C91500AD8329 /* TestViewController.m in Sources */,
 				EA0511192175C88B00AD8329 /* main.m in Sources */,
 				EA05110B2175C88A00AD8329 /* AppDelegate.m in Sources */,
+				EA05112A2175C91500AD8329 /* TestCollectionViewController.m in Sources */,
+				EA0511282175C91500AD8329 /* TestTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
