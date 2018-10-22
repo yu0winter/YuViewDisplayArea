@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = NSStringFromClass([self class]);
+    
+    self.tableView.frame = CGRectMake(0, 300, 375, 675-64);
     [self.view addSubview:self.tableView];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"测试万次性能" style:UIBarButtonItemStyleDone target:self action:@selector(testPerformance)];
 }
@@ -46,12 +48,29 @@
 #pragma mark - Delegate Realization 委托方法
 #pragma mark └ UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    for (UITableViewCell *cell in self.tableView.visibleCells) {
+    NSArray *visibleCells = self.tableView.visibleCells;
+    
+    
+    for (UITableViewCell *cell in visibleCells) {
+        NSLog(@"*********Cell:%@*********",cell.textLabel.text);
+        UIView *view = cell.yu_viewOfViewController;
+        NSArray *array = [cell yu_targetRespondersWithDisplayAreaClasses];
         CGFloat precent = [cell yu_displayedPrecentInView:self.tableView];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f",precent];
         [self.view yu_isDisplayedInKeyWindow];
+        
+        for (UIResponder *responder in array) {
+            CGFloat precent;
+            if ([responder isKindOfClass:[UIView class]]) {
+                precent = [cell yu_displayedPrecentInView:(UIView *)responder];
+            } else if ([responder isKindOfClass:[UIViewController class]]) {
+                precent = [cell yu_displayedPrecentInView:((UIViewController *)responder).view];
+            }
+            NSLog(@"(%@,%.2f)",[responder class],precent);
+        }
     }
 }
+
 #pragma mark └ UITableViewDelegate,UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -62,7 +81,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return 200;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
