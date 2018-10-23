@@ -59,6 +59,12 @@ printf("%s\n", [printString UTF8String]);\
     [super viewDidAppear:animated];
     [self testWindowOfSubView];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    NSLog(@"s");
+}
 #pragma mark - Event Response 事件响应
 - (void)testPerformance {
     double start = [[NSDate date] timeIntervalSince1970]*1000;
@@ -67,6 +73,7 @@ printf("%s\n", [printString UTF8String]);\
         [self.label1 yu_isDisplayedInView:self.label2];
         [self.label1 yu_locationInView:self.label2];
         [self.label1 yu_displayedPrecentInView:self.label2];
+        [self.label1 yu_minDisplayedPrecentInAllSuperviews];
     }
     double end = [[NSDate date] timeIntervalSince1970]*1000;
     NSLog(@"\n-------执行1万次查看性能--------");

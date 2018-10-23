@@ -44,59 +44,67 @@
  @return 在view内部坐标系中的位置。如过当前视图，没有展示在view中，则返回CGRectNull。
  */
 - (CGRect)yu_locationInView:(UIView *)view;
+@end
 
-/**
- 获取当前视图对应的视图控制器
+@interface UIView (YuViewDisplayArea_Superview)
 
- @return UIViewController 可能为空
- */
-- (UIViewController *)yu_currentViewController;
+/// 在当前视图的事件传递链中寻找指定类型的节点
+- (UIView *)yu_firstSuperviewWithClass:(Class)aClass;
+/// 在当前视图的事件传递链中寻找所有指定类型的节点
+- (NSArray <UIView *>*)yu_superviewsWithClass:(Class)aClass;
+/// 在当前视图的事件传递链中寻找指定类型的节点
+- (NSArray *)yu_superviewsWithClasses:(NSArray <Class>*)classes;
+/// 在当前视图的事件传递链中寻找指定类型的节点
+- (NSArray *)yu_superviewsWithClassNames:(NSArray <NSString *>*)classNames;
 
-/**
- 获取当前视图对应的视图控制器中的根视图
+#pragma mark └ All Superviews
 
- @return currentViewController.view 可能为空
- */
-- (UIView *)yu_viewOfViewController;
+/// 在当前视图的事件传递链中节点的集合
+- (NSArray <UIView *>*)yu_AllSuperviews;
+/// 获取当前视图在事件传递链中所有节点上的展示比例的最小值
+- (CGFloat)yu_minDisplayedPrecentInAllSuperviews;
+@end
 
+
+@interface UIView (YuViewDisplayArea_Responder)
+
+/// 在当前视图的事件传递链中寻找指定类型的节点
+- (UIResponder *)yu_firstResponderWithClass:(Class)aClass;
+
+/// 在当前视图的事件传递链中寻找所有指定类型的节点
+- (NSArray <UIResponder *>*)yu_respondersWithClass:(Class)aClass;
 /**
  在当前视图的事件传递链中寻找指定类型的节点
-
+ 
  @param classNames 节点类型的字符串格式集合，如 @[@"UIView",@"UIViewController"]。
  @return 节点的集合，可能为空集
  */
-- (NSArray *)yu_targetRespondersWithClassNames:(NSArray <NSString *>*)classNames;
-
+- (NSArray *)yu_respondersWithClassNames:(NSArray <NSString *>*)classNames;
 /**
  在当前视图的事件传递链中寻找指定类型的节点
  
  @param classes 节点的类型集合，如 @[[UIView class],[UIViewController class]]
  @return 节点的集合，可能为空集
  */
-- (NSArray *)yu_targetRespondersWithClasses:(NSArray <Class>*)classes;
+- (NSArray *)yu_respondersWithClasses:(NSArray <Class>*)classes;
 
+/// 在当前视图的事件传递链中节点的集合
+- (NSArray <UIResponder *>*)yu_AllResponders;
 
+#pragma mark └ CurrentViewController
 /**
- 事件传递链中影响屏幕显示较大的类
-
- @return @[[UITableView class],
- [UICollectionView class],[UIViewController class],[UIWindow class]]
- */
-- (NSArray <Class>*)yu_displayAreaClasses;
-
-/**
- 在当前视图的事件传递链中寻找指定类型的节点，节点类型为“事件传递链中影响屏幕显示较大的类”。可参考yu_displayAreaClasses方法
+ 获取当前视图对应的视图控制器
  
- @return 指定类型的节点的集合
+ @return UIViewController 可能为空
  */
-- (NSArray <UIResponder *>*)yu_targetRespondersWithDisplayAreaClasses;
-
+- (UIViewController *)yu_currentViewController;
 
 /**
- 获取当前视图在事件传递链中几个关键节点上的展示比例。节点类型参考yu_displayAreaClasses方法
- 并返回最小展示比例
-
- @return 最小展示比例。数值区域：(0,1.0)
+ 获取当前视图对应的视图控制器中的根视图
+ 
+ @return currentViewController.view 可能为空
  */
-- (CGFloat)yu_minPrecentDisplayedInNextResponders;
+- (UIView *)yu_viewOfViewController;
+
 @end
+

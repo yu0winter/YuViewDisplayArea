@@ -18,7 +18,19 @@
 		EA05112A2175C91500AD8329 /* TestCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0511242175C91500AD8329 /* TestCollectionViewController.m */; };
 		EA05112C2175C91500AD8329 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0511272175C91500AD8329 /* TestViewController.m */; };
 		EA05112F2175CE9700AD8329 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EA05112E2175CE9700AD8329 /* README.md */; };
+		EAFF8876217EC52400BC55B0 /* YuViewDisplayAreaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFF8875217EC52400BC55B0 /* YuViewDisplayAreaTests.m */; };
+		EAFF88A4217F291D00BC55B0 /* UIView+YuViewDisplayArea_Responder2.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFF88A3217F291D00BC55B0 /* UIView+YuViewDisplayArea_Responder2.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EAFF8878217EC52400BC55B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA0510FE2175C88A00AD8329 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA0511052175C88A00AD8329;
+			remoteInfo = YuViewDisplayArea;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		EA0511062175C88A00AD8329 /* YuViewDisplayArea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuViewDisplayArea.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,10 +52,22 @@
 		EA0511252175C91500AD8329 /* TestCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCollectionViewController.h; sourceTree = "<group>"; };
 		EA0511272175C91500AD8329 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		EA05112E2175CE9700AD8329 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		EAFF8873217EC52400BC55B0 /* YuViewDisplayAreaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YuViewDisplayAreaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAFF8875217EC52400BC55B0 /* YuViewDisplayAreaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YuViewDisplayAreaTests.m; sourceTree = "<group>"; };
+		EAFF8877217EC52400BC55B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAFF88A2217F291D00BC55B0 /* UIView+YuViewDisplayArea_Responder2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+YuViewDisplayArea_Responder2.h"; sourceTree = "<group>"; };
+		EAFF88A3217F291D00BC55B0 /* UIView+YuViewDisplayArea_Responder2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+YuViewDisplayArea_Responder2.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		EA0511032175C88A00AD8329 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAFF8870217EC52400BC55B0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -57,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				EA0511082175C88A00AD8329 /* YuViewDisplayArea */,
+				EAFF8874217EC52400BC55B0 /* YuViewDisplayAreaTests */,
 				EA0511072175C88A00AD8329 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				EA0511062175C88A00AD8329 /* YuViewDisplayArea.app */,
+				EAFF8873217EC52400BC55B0 /* YuViewDisplayAreaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,6 +104,8 @@
 				EA05110D2175C88A00AD8329 /* ViewController.m */,
 				EA05111F2175C91400AD8329 /* UIView+YuViewDisplayArea.h */,
 				EA0511212175C91500AD8329 /* UIView+YuViewDisplayArea.m */,
+				EAFF88A2217F291D00BC55B0 /* UIView+YuViewDisplayArea_Responder2.h */,
+				EAFF88A3217F291D00BC55B0 /* UIView+YuViewDisplayArea_Responder2.m */,
 				EA05112D2175C99100AD8329 /* TestViewControllers */,
 				EA05110F2175C88A00AD8329 /* Main.storyboard */,
 				EA0511122175C88B00AD8329 /* Assets.xcassets */,
@@ -102,6 +130,15 @@
 			path = TestViewControllers;
 			sourceTree = "<group>";
 		};
+		EAFF8874217EC52400BC55B0 /* YuViewDisplayAreaTests */ = {
+			isa = PBXGroup;
+			children = (
+				EAFF8875217EC52400BC55B0 /* YuViewDisplayAreaTests.m */,
+				EAFF8877217EC52400BC55B0 /* Info.plist */,
+			);
+			path = YuViewDisplayAreaTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,6 +159,24 @@
 			productReference = EA0511062175C88A00AD8329 /* YuViewDisplayArea.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EAFF8872217EC52400BC55B0 /* YuViewDisplayAreaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAFF887C217EC52400BC55B0 /* Build configuration list for PBXNativeTarget "YuViewDisplayAreaTests" */;
+			buildPhases = (
+				EAFF886F217EC52400BC55B0 /* Sources */,
+				EAFF8870217EC52400BC55B0 /* Frameworks */,
+				EAFF8871217EC52400BC55B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EAFF8879217EC52400BC55B0 /* PBXTargetDependency */,
+			);
+			name = YuViewDisplayAreaTests;
+			productName = YuViewDisplayAreaTests;
+			productReference = EAFF8873217EC52400BC55B0 /* YuViewDisplayAreaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -133,6 +188,10 @@
 				TargetAttributes = {
 					EA0511052175C88A00AD8329 = {
 						CreatedOnToolsVersion = 10.0;
+					};
+					EAFF8872217EC52400BC55B0 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = EA0511052175C88A00AD8329;
 					};
 				};
 			};
@@ -150,6 +209,7 @@
 			projectRoot = "";
 			targets = (
 				EA0511052175C88A00AD8329 /* YuViewDisplayArea */,
+				EAFF8872217EC52400BC55B0 /* YuViewDisplayAreaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -166,6 +226,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EAFF8871217EC52400BC55B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -174,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA05110E2175C88A00AD8329 /* ViewController.m in Sources */,
+				EAFF88A4217F291D00BC55B0 /* UIView+YuViewDisplayArea_Responder2.m in Sources */,
 				EA0511292175C91500AD8329 /* UIView+YuViewDisplayArea.m in Sources */,
 				EA05112C2175C91500AD8329 /* TestViewController.m in Sources */,
 				EA0511192175C88B00AD8329 /* main.m in Sources */,
@@ -183,7 +251,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EAFF886F217EC52400BC55B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAFF8876217EC52400BC55B0 /* YuViewDisplayAreaTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EAFF8879217EC52400BC55B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA0511052175C88A00AD8329 /* YuViewDisplayArea */;
+			targetProxy = EAFF8878217EC52400BC55B0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EA05110F2175C88A00AD8329 /* Main.storyboard */ = {
@@ -351,6 +435,45 @@
 			};
 			name = Release;
 		};
+		EAFF887A217EC52400BC55B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = YuViewDisplayAreaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = nyl.YuViewDisplayAreaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YuViewDisplayArea.app/YuViewDisplayArea";
+			};
+			name = Debug;
+		};
+		EAFF887B217EC52400BC55B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = YuViewDisplayAreaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nyl.YuViewDisplayAreaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YuViewDisplayArea.app/YuViewDisplayArea";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -368,6 +491,15 @@
 			buildConfigurations = (
 				EA05111D2175C88B00AD8329 /* Debug */,
 				EA05111E2175C88B00AD8329 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAFF887C217EC52400BC55B0 /* Build configuration list for PBXNativeTarget "YuViewDisplayAreaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAFF887A217EC52400BC55B0 /* Debug */,
+				EAFF887B217EC52400BC55B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

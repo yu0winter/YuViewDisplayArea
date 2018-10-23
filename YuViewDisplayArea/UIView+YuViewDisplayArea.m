@@ -82,6 +82,174 @@
     return rect;
 }
 
+@end
+
+@implementation UIView (YuViewDisplayArea_Superview)
+/// 在当前视图的事件传递链中寻找指定类型的节点
+- (UIView *)yu_firstSuperviewWithClass:(Class)aClass {
+    UIView *target = self.superview;
+    while (target) {
+        if ([target isKindOfClass:aClass]) {
+            break;
+        }
+        target = target.superview;
+    }
+    return target;
+}
+/// 在当前视图的事件传递链中寻找所有指定类型的节点
+- (NSArray <UIView *>*)yu_superviewsWithClass:(Class)aClass {
+    
+    NSMutableArray *responders = [NSMutableArray array];
+    
+    UIView *target = self.superview;
+    while (target) {
+        if ([target isKindOfClass:aClass]) {
+            [responders addObject:target];
+        }
+        target = target.superview;
+    }
+    return responders;
+}
+/// 在当前视图的事件传递链中寻找指定类型的节点
+- (NSArray *)yu_superviewsWithClasses:(NSArray <Class>*)classes {
+    NSMutableArray *arrayM = [NSMutableArray array];
+    
+    UIView *target = self.superview;
+    while (target) {
+        for (Class aClass in classes) {
+            if ([target isKindOfClass:aClass]) {
+                [arrayM addObject:target];
+            }
+        }
+        target = target.superview;
+    }
+    return arrayM;
+}
+/// 在当前视图的事件传递链中寻找指定类型的节点
+- (NSArray *)yu_superviewsWithClassNames:(NSArray <NSString *>*)classNames {
+    NSMutableArray *classes = [NSMutableArray arrayWithCapacity:classNames.count];
+    for (NSString *name in classNames) {
+        Class aClass = NSClassFromString(name);
+        [classes addObject:aClass];
+    }
+    
+    NSArray *result = [self yu_superviewsWithClasses:classes];
+    return result;
+}
+
+- (CGFloat)yu_minDisplayedPrecentInSuperviews:(NSArray <UIView *> *)superviews  {
+    
+    CGFloat result = 0;
+    NSArray <NSNumber *>*array = [self yu_displayedPrecentsInSuperviews:superviews];
+    for (int i = 0; i < array.count; i++) {
+        CGFloat precent = [array[i] floatValue];
+        if (i== 0) {
+            result = precent;
+        } else if (precent < result) {
+            result = precent;
+        }
+    }
+    return result;
+}
+
+- (NSArray <NSNumber *>*)yu_displayedPrecentsInSuperviews:(NSArray <UIView *> *)superviews  {
+    
+    NSArray *array = superviews;
+    NSMutableArray *arrayM = [NSMutableArray arrayWithCapacity:array.count];
+    for (UIView *superView in array) {
+        CGFloat precent = [self yu_displayedPrecentInView:superView];
+        [arrayM addObject:@(precent)];
+    }
+    return arrayM;
+}
+
+#pragma mark └ All Superviews
+
+- (NSArray<UIView *> *)yu_AllSuperviews {
+    
+    NSMutableArray *arrayM = [NSMutableArray array];
+    UIView *target = self.superview;
+    while (target) {
+        [arrayM addObject:target];
+        target = target.superview;
+    }
+    return arrayM;
+}
+
+- (CGFloat)yu_minDisplayedPrecentInAllSuperviews {
+    NSArray *superviews = [self yu_AllSuperviews];
+    return [self yu_minDisplayedPrecentInSuperviews:superviews];
+}
+
+@end
+
+@implementation UIView (YuViewDisplayArea_Responder)
+
+- (UIResponder *)yu_firstResponderWithClass:(Class)aClass {
+    
+    UIResponder *target = self.nextResponder;
+    while (target) {
+        if ([target isKindOfClass:aClass]) {
+            break;
+        }
+        target = target.nextResponder;
+    }
+    return target;
+}
+
+- (NSArray <UIResponder *>*)yu_respondersWithClass:(Class)aClass {
+    
+    NSMutableArray *responders = [NSMutableArray array];
+    
+    UIResponder *target = self.nextResponder;
+    while (target) {
+        if ([target isKindOfClass:aClass]) {
+            [responders addObject:target];
+        }
+        target = target.nextResponder;
+    }
+    return responders;
+}
+
+- (NSArray *)yu_respondersWithClassNames:(NSArray *)classNames {
+    NSMutableArray *classes = [NSMutableArray arrayWithCapacity:classNames.count];
+    for (NSString *name in classNames) {
+        Class aClass = NSClassFromString(name);
+        [classes addObject:aClass];
+    }
+    
+    NSArray *result = [self yu_respondersWithClasses:classes];
+    return result;
+}
+
+- (NSArray *)yu_respondersWithClasses:(NSArray *)classes {
+    NSMutableArray *arrayM = [NSMutableArray array];
+    
+    UIResponder *target = self.nextResponder;
+    while (target) {
+        for (Class aClass in classes) {
+            if ([target isKindOfClass:aClass]) {
+                [arrayM addObject:target];
+            }
+        }
+        target = target.nextResponder;
+    }
+    return arrayM;
+}
+
+
+- (NSArray <UIResponder *> *)yu_AllResponders {
+    NSMutableArray *arrayM = [NSMutableArray array];
+    UIResponder *target = self.nextResponder;
+    while (target) {
+        [arrayM addObject:target];
+        target = target.nextResponder;
+    }
+    return arrayM;
+}
+
+#pragma mark └ CurrentViewController
+
 - (UIViewController *)yu_currentViewController {
     
     UIResponder *target = self.nextResponder;
@@ -101,88 +269,6 @@
         return vc.view;
     }
     return nil;
-}
-
-
-- (UIResponder *)yu_targetResponderWithClass:(Class)aClass {
-    
-    UIResponder *target = self.nextResponder;
-    while (target) {
-        if ([target isKindOfClass:aClass]) {
-            break;
-        }
-        target = target.nextResponder;
-    }
-    return target;
-}
-
-- (NSArray *)yu_displayAreaClasses {
-    return @[
-             [UITableView class]
-             ,[UICollectionView class]
-             ,[UIViewController class]
-             ,[UIWindow class]
-             ];
-}
-
-- (NSArray *)yu_targetRespondersWithClassNames:(NSArray *)classNames {
-    NSMutableArray *classes = [NSMutableArray arrayWithCapacity:classNames.count];
-    for (NSString *name in classNames) {
-        Class aClass = NSClassFromString(name);
-        [classes addObject:aClass];
-    }
-    
-    NSArray *result = [self yu_targetRespondersWithClasses:classes];
-    return result;
-}
-
-- (NSArray *)yu_targetRespondersWithClasses:(NSArray *)classes {
-    NSMutableArray *arrayM = [NSMutableArray array];
-    
-    UIResponder *target = self.nextResponder;
-    while (target) {
-        for (Class aClass in classes) {
-            if ([target isKindOfClass:aClass]) {
-                [arrayM addObject:target];
-            }
-        }
-        target = target.nextResponder;
-    }
-    return arrayM;
-}
-
-- (NSArray *)yu_targetRespondersWithDisplayAreaClasses {
-    NSArray *classes = [self yu_displayAreaClasses];
-    return [self yu_targetRespondersWithClasses:classes];
-}
-
-- (CGFloat)yu_minPrecentDisplayedInNextResponders {
-    
-    NSArray *array = [self yu_targetRespondersWithDisplayAreaClasses];
-    NSMutableArray *arrayM = [NSMutableArray arrayWithCapacity:array.count];
-    for (UIResponder *responder in array) {
-        CGFloat precent;
-        if ([responder isKindOfClass:[UIView class]]) {
-            precent = [self yu_displayedPrecentInView:(UIView *)responder];
-        } else if ([responder isKindOfClass:[UIViewController class]]) {
-            precent = [self yu_displayedPrecentInView:((UIViewController *)responder).view];
-        } else {
-            continue;
-        }
-        [arrayM addObject:@(precent)];
-    }
-    
-    CGFloat result = 0;
-    for (int i = 0; i < arrayM.count; i++) {
-        CGFloat precent = [(NSNumber *)arrayM[i] floatValue];
-        if (i== 0) {
-            result = precent;
-        }
-        else if (precent < result) {
-            result = precent;
-        }
-    }
-    return result;
 }
 
 @end
