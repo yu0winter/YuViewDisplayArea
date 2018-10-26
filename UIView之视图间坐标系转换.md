@@ -46,3 +46,8 @@ CGRect result_right = [viewA convertRect:viewA.frame toView:viewB]; 正确：✅
 result_false 为，viewA坐标系中frame位置，应设在viewB坐标系中的区域。
 相对result_right 来说，result_false的origin会附加viewA.frame.origin的值。
 ```
+## 资料
+
+- [YuViewDisplayArea](https://github.com/yu0winter/YuViewDisplayArea/)
+- [UIView之在屏幕上的展示百分比](https://github.com/yu0winter/YuViewDisplayArea/blob/master/UIView之在屏幕上的展示百分比.md)
+
