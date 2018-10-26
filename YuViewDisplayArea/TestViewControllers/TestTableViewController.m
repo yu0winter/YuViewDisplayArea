@@ -24,7 +24,9 @@
     [super viewDidLoad];
     self.title = NSStringFromClass([self class]);
     
-    self.tableView.frame = CGRectMake(0, 64, 375, 675-64);
+    self.tableView.frame = CGRectMake(0, 64 +50, 375, 675-64-100);
+    self.tableView.layer.borderColor = [UIColor orangeColor].CGColor;
+    self.tableView.layer.borderWidth = 5;
     [self.view addSubview:self.tableView];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"测试万次性能" style:UIBarButtonItemStyleDone target:self action:@selector(testPerformance)];
 }
@@ -50,35 +52,16 @@
 #pragma mark - Delegate Realization 委托方法
 #pragma mark └ UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSArray *visibleCells = self.tableView.visibleCells;
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    if (cell == nil) {
-        // An object representing a cell of the table, or nil if the cell is not visible or indexPath is out of range.
-        // 代表当前indexPath对应的Cell不可见，或者indexPath超出数据源的范围
-    }
-    [self.tableView.visibleCells.firstObject yu_minDisplayedPrecentInAllSuperviews];
-    return;
+    NSArray *visibleCells = self.tableView.visibleCells;
     for (UITableViewCell *cell in visibleCells) {
-//        NSLog(@"*********Cell:%@*********",cell.textLabel.text);
-        [cell yu_minDisplayedPrecentInAllSuperviews];
-        
-//        UIView *view = cell.yu_viewOfViewController;
-//        NSArray *array = [cell yu_targetRespondersWithDisplayAreaClasses];
-//        CGFloat precent = [cell yu_displayedPrecentInView:self.tableView];
-//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f",precent];
-//        [self.view yu_isDisplayedInKeyWindow];
-//
-//        for (UIResponder *responder in array) {
-//            CGFloat precent;
-//            if ([responder isKindOfClass:[UIView class]]) {
-//                precent = [cell yu_displayedPrecentInView:(UIView *)responder];
-//            } else if ([responder isKindOfClass:[UIViewController class]]) {
-//                precent = [cell yu_displayedPrecentInView:((UIViewController *)responder).view];
-//            }
-//            NSLog(@"(%@,%.2f)",[responder class],precent);
-//        }
+        CGFloat precent = [cell yu_minDisplayedPrecentInAllSuperviews];
+        if (precent > 0.5) {
+            cell.contentView.backgroundColor = [UIColor clearColor];
+        } else {
+            cell.contentView.backgroundColor = [UIColor colorWithWhite:0 alpha:1 - 2*precent];
+        }
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f%%",precent *100];
     }
 }
 
@@ -101,11 +84,6 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
     }
-    
-    if (indexPath.row ==19) {
-        self.label19 = [[UILabel alloc] init];
-        [cell.contentView addSubview:self.label19];
-    }
     cell.textLabel.text = @(indexPath.row).stringValue;
     return cell;
 }
@@ -118,6 +96,8 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor lightGrayColor];
+        _tableView.clipsToBounds =NO;
+        
 //        _tableView.estimatedRowHeight = 0;
 //        _tableView.estimatedSectionHeaderHeight = 0;
 //        _tableView.estimatedSectionFooterHeight = 0;

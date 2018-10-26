@@ -1,4 +1,4 @@
-#  YuViewDisplayrect
+#  YuViewDisplayArea
 
 本项目在系统类的基础上提供了简便的API，用于获取UIView之间展示区域的交集关系。
 
@@ -16,44 +16,15 @@
 
 /// 获取当前视图在view内部坐标系中的位置
 - (CGRect)yu_locationInView:(UIView *)view;
-```
 
-## UIView 视图间坐标系转换
-
-* ### convertRect: fromView:
+/// 获取当前视图在事件传递链中所有节点上的展示比例的最小值
+- (CGFloat)yu_minDisplayedPrecentInAllSuperviews;
 
 ```
-- (CGRect)convertRect:(CGRect)rect fromView:(UIView *)view;
+## 算法逻辑
 
-// 转换viewB坐标系内区域rect，在viewA坐标系中的位置。
-CGRect rect = viewB.bounds;
-CGRect result = [viewA convertRect:rect fromView:viewB];
-
-viewB坐标系内区域rect，在viewA坐标系中的位置。
-上述方法rect取的是viewB.bounds的值，因此又可以描述为：
-viewB在viewA内部坐标系中的位置。
-```
-
-* ### convertRect: toView:
-```
-- (CGRect)convertRect:(CGRect)rect toView:(UIView *)view;
-
-// 转换viewA坐标系内区域rect，在viewB坐标系中的位置。
-CGRect rect = viewA.bounds;
-CGRect result = [viewA convertRect:rect toView:viewB];
-上述方法rect取的是viewA.bounds的值，因此又可以描述为：
-viewA在viewB内部坐标系中的位置。
-```
-* ### 常见误区
-
-rect 参数的使用经常会出现错误：
-```
-CGRect result_false = [viewA convertRect:viewA.frame toView:viewB]; 错误：❌
-CGRect result_right = [viewA convertRect:viewA.frame toView:viewB]; 正确：✅
-
-result_false 为，viewA坐标系中frame位置，应设在viewB坐标系中的区域。
-相对result_right 来说，result_false的origin会附加viewA.frame.origin的值。
-```
+- [UIView之视图间坐标系转换](https://github.com/yu0winter/YuViewDisplayArea/blob/master/UIView视图间坐标系转换.md)
+- [UIView之在屏幕上的展示百分比](https://github.com/yu0winter/YuViewDisplayArea/blob/master/UIView之在屏幕上的展示百分比.md)
 
 ## 遇到的问题
 

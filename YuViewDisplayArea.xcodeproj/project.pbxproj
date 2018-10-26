@@ -19,7 +19,6 @@
 		EA05112C2175C91500AD8329 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0511272175C91500AD8329 /* TestViewController.m */; };
 		EA05112F2175CE9700AD8329 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = EA05112E2175CE9700AD8329 /* README.md */; };
 		EAFF8876217EC52400BC55B0 /* YuViewDisplayAreaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFF8875217EC52400BC55B0 /* YuViewDisplayAreaTests.m */; };
-		EAFF88A4217F291D00BC55B0 /* UIView+YuViewDisplayArea_Responder2.m in Sources */ = {isa = PBXBuildFile; fileRef = EAFF88A3217F291D00BC55B0 /* UIView+YuViewDisplayArea_Responder2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,11 +51,11 @@
 		EA0511252175C91500AD8329 /* TestCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCollectionViewController.h; sourceTree = "<group>"; };
 		EA0511272175C91500AD8329 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		EA05112E2175CE9700AD8329 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		EA5BB4212183087B00277B0F /* UIView之视图间坐标系转换.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "UIView之视图间坐标系转换.md"; sourceTree = "<group>"; };
+		EA5BB4222183088C00277B0F /* UIView之在屏幕上的展示百分比.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "UIView之在屏幕上的展示百分比.md"; sourceTree = "<group>"; };
 		EAFF8873217EC52400BC55B0 /* YuViewDisplayAreaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YuViewDisplayAreaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAFF8875217EC52400BC55B0 /* YuViewDisplayAreaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YuViewDisplayAreaTests.m; sourceTree = "<group>"; };
 		EAFF8877217EC52400BC55B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EAFF88A2217F291D00BC55B0 /* UIView+YuViewDisplayArea_Responder2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+YuViewDisplayArea_Responder2.h"; sourceTree = "<group>"; };
-		EAFF88A3217F291D00BC55B0 /* UIView+YuViewDisplayArea_Responder2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+YuViewDisplayArea_Responder2.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +103,6 @@
 				EA05110D2175C88A00AD8329 /* ViewController.m */,
 				EA05111F2175C91400AD8329 /* UIView+YuViewDisplayArea.h */,
 				EA0511212175C91500AD8329 /* UIView+YuViewDisplayArea.m */,
-				EAFF88A2217F291D00BC55B0 /* UIView+YuViewDisplayArea_Responder2.h */,
-				EAFF88A3217F291D00BC55B0 /* UIView+YuViewDisplayArea_Responder2.m */,
 				EA05112D2175C99100AD8329 /* TestViewControllers */,
 				EA05110F2175C88A00AD8329 /* Main.storyboard */,
 				EA0511122175C88B00AD8329 /* Assets.xcassets */,
@@ -113,6 +110,8 @@
 				EA0511142175C88B00AD8329 /* LaunchScreen.storyboard */,
 				EA0511182175C88B00AD8329 /* main.m */,
 				EA05112E2175CE9700AD8329 /* README.md */,
+				EA5BB4212183087B00277B0F /* UIView之视图间坐标系转换.md */,
+				EA5BB4222183088C00277B0F /* UIView之在屏幕上的展示百分比.md */,
 			);
 			path = YuViewDisplayArea;
 			sourceTree = "<group>";
@@ -241,7 +240,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA05110E2175C88A00AD8329 /* ViewController.m in Sources */,
-				EAFF88A4217F291D00BC55B0 /* UIView+YuViewDisplayArea_Responder2.m in Sources */,
 				EA0511292175C91500AD8329 /* UIView+YuViewDisplayArea.m in Sources */,
 				EA05112C2175C91500AD8329 /* TestViewController.m in Sources */,
 				EA0511192175C88B00AD8329 /* main.m in Sources */,

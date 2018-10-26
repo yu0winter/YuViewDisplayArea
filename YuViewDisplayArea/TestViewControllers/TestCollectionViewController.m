@@ -66,13 +66,20 @@
 - (void)testVertical {
     self.flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     self.itemSize = CGSizeMake(300, 100);
-    self.collectionView.frame = CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height - 64);
+    self.collectionView.frame = CGRectMake(0, 64+50, self.view.bounds.size.width, self.view.bounds.size.height - 64 - 100);
+    self.collectionView.layer.borderColor = [UIColor orangeColor].CGColor;
+    self.collectionView.layer.borderWidth = 5;
+    self.collectionView.clipsToBounds = NO;
 }
 
 - (void)testHorizontal {
     self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.itemSize = CGSizeMake(200, 100);
-    self.collectionView.frame = CGRectMake(0, 64+20, self.view.bounds.size.width, 100);
+    
+    self.collectionView.frame = CGRectMake(50, 64+20, self.view.bounds.size.width - 100, 100);
+    self.collectionView.layer.borderColor = [UIColor orangeColor].CGColor;
+    self.collectionView.layer.borderWidth = 5;
+    self.collectionView.clipsToBounds = NO;
 }
 
 - (void)testPerformance {
@@ -91,14 +98,22 @@
 #pragma mark └ UISCrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     for (UICollectionViewCell *cell in self.collectionView.visibleCells) {
-        CGFloat precent = [cell yu_displayedPrecentInView:self.collectionView];
+
         UILabel *label = (UILabel *)[cell.contentView viewWithTag:99];
         if (!label) continue;
+        
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
-        label.text = [NSString stringWithFormat:@"%ld  %.2f",(long)indexPath.item,precent];
-        [self.view yu_isDisplayedInKeyWindow];
+
+        CGFloat precent = [cell yu_minDisplayedPrecentInAllSuperviews];
+        if (precent > 0.5) {
+            label.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+        } else {
+            label.backgroundColor = [UIColor colorWithWhite:0 alpha:precent];
+        }
+        label.text = [NSString stringWithFormat:@"%ld  %.2f%%",(long)indexPath.item,100 * precent];
     }
 }
+
 #pragma mark └ UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -108,7 +123,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class]) forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor colorWithWhite:indexPath.row / 10.0 alpha:1];
+//    cell.backgroundColor = [UIColor colorWithWhite:indexPath.row / 10.0 alpha:1];
     
     UILabel *label = (UILabel *)[cell.contentView viewWithTag:99];
     if (!label) {
